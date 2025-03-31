@@ -1,1 +1,2 @@
-# h5ad2rds.R-
+# h5ad2rds.R更新
+帮助解决在使用h5ad2rds.R脚本转换h5ad文件到RDS时遇到的错误提到的错误信息是：“Error in UpdateKey(key = layer) : could not find function "UpdateKey" Calls: Convert ... Convert -> Convert.H5File -> H5ADToH5Seurat -> <Anonymous> Execution halted”。当前的错误发生在调用UpdateKey函数时，这说明脚本可能依赖的Seurat或SeuratDisk版本中该函数已被弃用或重命名。可能Convert函数的工作流程发生了变化，导致旧脚本中的函数调用失效。这里UpdateKey 是旧版 Seurat 或 SeuratDisk 包中的函数，用于更新对象中的键名（如 RNA → RNA_ 等）。在 Seurat v5.2 及以上版本中，此函数可能已被弃用或整合到其他方法中（例如 RenameAssays 或 Key [属性直接赋值），导致脚本调用失败。解决方案：修改转换脚本逻辑
